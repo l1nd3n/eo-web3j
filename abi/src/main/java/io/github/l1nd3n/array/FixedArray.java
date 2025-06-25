@@ -4,11 +4,11 @@ import io.github.l1nd3n.Type;
 
 import java.util.Objects;
 
-public final class FixedArray<T extends Type> implements Type {
+public final class FixedArray implements Type {
     private final Integer size;
     private final Type type;
 
-    public FixedArray(Integer size, T type) {
+    public FixedArray(Integer size, Type type) {
         this.size = Objects.requireNonNull(size);
         if (this.size <= 0) {
             throw new IllegalArgumentException("Array size must be greater than zero");
