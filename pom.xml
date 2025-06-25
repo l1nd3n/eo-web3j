@@ -8,7 +8,6 @@
   <packaging>pom</packaging>
 
   <name>eo-web3j</name>
-  <url>http://maven.apache.org</url>
   <modules>
     <module>abi</module>
   </modules>
@@ -18,11 +17,6 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.cactoos</groupId>
-      <artifactId>cactoos</artifactId>
-      <version>0.57.0</version>
-    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
