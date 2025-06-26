@@ -11,14 +11,18 @@ public class StFixedBytes implements Type {
 
     @Override
     public String view() {
-        if (bytes <= 0 || bytes > 32) {
-            throw new IllegalStateException(String.format("Invalid bytes size: %d", bytes));
-        }
+        sizeCheck();
         return String.format("bytes%d", bytes);
     }
 
     @Override
     public Integer bytes() {
         return bytes;
+    }
+
+    private void sizeCheck() {
+        if (bytes <= 0 || bytes > 32) {
+            throw new IllegalStateException(String.format("Invalid bytes size: %d", bytes));
+        }
     }
 }

@@ -14,14 +14,18 @@ public final class StDynamicArray implements Type {
 
     @Override
     public String view() {
-        if (size <= 0) {
-            throw new IllegalStateException("Size must be greater than 0");
-        }
+        sizeCheck();
         return String.format("%s[%d]",type.view(), size);
     }
 
     @Override
     public Integer bytes() throws UncertainSizeException {
         throw new UncertainSizeException();
+    }
+
+    private void sizeCheck() {
+        if (size <= 0) {
+            throw new IllegalStateException("Size must be greater than 0");
+        }
     }
 }
