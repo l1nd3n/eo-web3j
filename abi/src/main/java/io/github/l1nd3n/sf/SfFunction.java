@@ -37,7 +37,7 @@ public final class SfFunction implements Function {
     }
 
     @Override
-    public String view() {
+    public String presentation() {
         if (outputs.isEmpty()) {
             return signature();
         }
@@ -45,6 +45,6 @@ public final class SfFunction implements Function {
     }
 
     private String listing(List<Type> types) {
-        return types.stream().map(Type::type).collect(Collectors.joining(","));
+        return types.stream().map(Type::view).collect(Collectors.joining(","));
     }
 }

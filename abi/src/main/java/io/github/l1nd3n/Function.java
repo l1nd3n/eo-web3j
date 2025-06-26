@@ -10,5 +10,5 @@ public interface Function {
 
     String signature();
 
-    String view();
+    String presentation();
 }

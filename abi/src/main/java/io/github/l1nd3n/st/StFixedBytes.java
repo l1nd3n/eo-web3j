@@ -10,7 +10,7 @@ public class StFixedBytes implements Type {
     }
 
     @Override
-    public String type() {
+    public String view() {
         if (bytes <= 0 || bytes > 32) {
             throw new IllegalStateException(String.format("Invalid bytes size: %d", bytes));
         }

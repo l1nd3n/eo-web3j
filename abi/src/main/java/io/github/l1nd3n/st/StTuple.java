@@ -17,13 +17,13 @@ public class StTuple implements Type {
     }
 
     @Override
-    public String type() {
+    public String view() {
         if (this.fields.isEmpty()) {
             throw new IllegalStateException("Tuple must have at least one field");
         }
         return String.format(
                 "(%s)",
-                fields.stream().map(Type::type).collect(Collectors.joining(","))
+                fields.stream().map(Type::view).collect(Collectors.joining(","))
         );
     }
 }

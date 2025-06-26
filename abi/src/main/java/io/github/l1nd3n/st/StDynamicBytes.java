@@ -5,7 +5,7 @@ import io.github.l1nd3n.Type;
 public class StDynamicBytes implements Type {
 
     @Override
-    public String type() {
+    public String view() {
         return "bytes";
     }
 }
