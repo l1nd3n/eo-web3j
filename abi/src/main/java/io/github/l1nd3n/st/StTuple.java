@@ -12,8 +12,7 @@ public class StTuple implements Type {
     private final List<Type> fields;
 
     public StTuple(List<Type> fields) {
-        this.fields = Collections.unmodifiableList(new LinkedList<>(fields));
-        this.fields.forEach(Objects::requireNonNull);
+        this.fields = fields;
     }
 
     @Override
