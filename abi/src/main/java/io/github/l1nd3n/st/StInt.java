@@ -11,14 +11,19 @@ public class StInt implements Type {
 
     @Override
     public String view() {
-        if (bits <= 0 || bits > 256 || bits % 8 != 0) {
-            throw new IllegalStateException(String.format("Invalid int bit size: %d", bits));
-        }
+        sizeCheck();
         return String.format("int%d", bits);
     }
 
     @Override
     public Integer bytes() {
+        sizeCheck();
         return bits / Byte.SIZE;
+    }
+
+    private void sizeCheck() {
+        if (bits <= 0 || bits > 256 || bits % 8 != 0) {
+            throw new IllegalStateException(String.format("Invalid int bit size: %d", bits));
+        }
     }
 }

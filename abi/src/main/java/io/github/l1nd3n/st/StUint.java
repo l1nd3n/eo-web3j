@@ -1,6 +1,7 @@
 package io.github.l1nd3n.st;
 
 import io.github.l1nd3n.Type;
+import io.github.l1nd3n.UncertainSizeException;
 
 import java.util.Objects;
 
@@ -17,5 +18,10 @@ public final class StUint implements Type {
             throw new IllegalStateException(String.format("Invalid uint bit size: %d", bits));
         }
         return String.format("uint%d", bits);
+    }
+
+    @Override
+    public Integer bytes() throws UncertainSizeException {
+        return 0;
     }
 }
