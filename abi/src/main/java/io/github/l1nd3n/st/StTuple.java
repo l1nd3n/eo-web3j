@@ -1,4 +1,4 @@
-package io.github.l1nd3n.tuple;
+package io.github.l1nd3n.st;
 
 import io.github.l1nd3n.Type;
 
@@ -8,22 +8,22 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Tuple implements Type {
+public class StTuple implements Type {
     private final List<Type> fields;
 
-    public Tuple(List<Type> fields) {
+    public StTuple(List<Type> fields) {
         this.fields = Collections.unmodifiableList(new LinkedList<>(fields));
-        if (this.fields.isEmpty()) {
-            throw new IllegalStateException("Tuple must have at least one field");
-        }
         this.fields.forEach(Objects::requireNonNull);
     }
 
     @Override
-    public String asString() {
+    public String type() {
+        if (this.fields.isEmpty()) {
+            throw new IllegalStateException("Tuple must have at least one field");
+        }
         return String.format(
                 "(%s)",
-                fields.stream().map(Type::asString).collect(Collectors.joining(","))
+                fields.stream().map(Type::type).collect(Collectors.joining(","))
         );
     }
 }
