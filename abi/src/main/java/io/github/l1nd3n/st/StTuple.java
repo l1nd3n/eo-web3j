@@ -1,6 +1,7 @@
 package io.github.l1nd3n.st;
 
 import io.github.l1nd3n.Type;
+import io.github.l1nd3n.UncertainSizeException;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -24,5 +25,14 @@ public class StTuple implements Type {
                 "(%s)",
                 fields.stream().map(Type::view).collect(Collectors.joining(","))
         );
+    }
+
+    @Override
+    public Integer bytes() throws UncertainSizeException {
+        Integer bytes = 0;
+        for (Type field : fields) {
+            bytes += field.bytes();
+        }
+        return bytes;
     }
 }

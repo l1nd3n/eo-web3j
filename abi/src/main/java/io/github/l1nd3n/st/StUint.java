@@ -8,7 +8,7 @@ public final class StUint implements Type {
     private final Integer bits;
 
     public StUint(Integer bits) {
-        this.bits = Objects.requireNonNull(bits);
+        this.bits = bits;
     }
 
     @Override

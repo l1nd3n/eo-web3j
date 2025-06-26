@@ -16,4 +16,9 @@ public class StFixedBytes implements Type {
         }
         return String.format("bytes%d", bytes);
     }
+
+    @Override
+    public Integer bytes() {
+        return bytes;
+    }
 }
