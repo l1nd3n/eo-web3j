@@ -2,6 +2,7 @@ package io.github.l1nd3n.sf;
 
 import io.github.l1nd3n.Function;
 import io.github.l1nd3n.Type;
+import org.cactoos.list.Immutable;
 
 import java.util.Collections;
 import java.util.List;
@@ -20,19 +21,17 @@ public final class SfFunction implements Function {
 
     @Override
     public List<Type> inputs() {
-        return Collections.unmodifiableList(inputs);
+        return new Immutable<Type>(inputs);
     }
 
     @Override
     public List<Type> outputs() {
-        return Collections.unmodifiableList(outputs);
+        return new Immutable<Type>(outputs);
     }
 
     @Override
     public String signature() {
-        if (this.name.isEmpty()) {
-            throw new IllegalStateException("Function name cannot be empty string");
-        }
+        nameCheck();
         return String.format("%s(%s)", name, listing(inputs));
     }
 
@@ -46,5 +45,11 @@ public final class SfFunction implements Function {
 
     private String listing(List<Type> types) {
         return types.stream().map(Type::view).collect(Collectors.joining(","));
+    }
+
+    private void nameCheck() {
+        if (this.name.isEmpty()) {
+            throw new IllegalStateException("Function name cannot be empty string");
+        }
     }
 }
